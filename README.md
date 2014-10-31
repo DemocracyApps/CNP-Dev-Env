@@ -12,7 +12,11 @@ These instructions assume that you are working in OSX.
 3. Install Git: http://git-scm.com/downloads
 4. Navigate to the directory where you want to create the development directory. Clone this repository 
    to a directory called CNP:
+
         git clone https://github.com/DemocracyApps/CNP-Dev-Env.git CNP
+
 5. Navigate to the CNP directory and clone the CNP platform directory:
+
         git clone https://github.com/DemocracyApps/CNP.git cnp
 
+6. 
