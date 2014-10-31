@@ -3,7 +3,7 @@ CNP-Dev-Env
 
 Test/development environment for the Community Narratives Platform. 
 
-=Instructions for Setting Up=
+##Instructions for Setting Up
 
 These instructions assume that you are working in OSX.
 
