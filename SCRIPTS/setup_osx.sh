@@ -1,5 +1,4 @@
-echo Hello
-echo $SHELL
+echo 'Setting up CNP development environment'
 
 git clone https://github.com/DemocracyApps/CNP.git cnp
 cd cnp/src/vendor

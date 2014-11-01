@@ -15,27 +15,28 @@ These instructions assume that you are working in OSX and that commands are bein
 
         git clone https://github.com/DemocracyApps/CNP-Dev-Env.git CNP
 
-5. Navigate to the CNP directory and run the following command:
+5. Navigate to the CNP directory and run the following commands:
 
         ./SCRIPTS/setup_osx.sh
+        cp ./FILES/config.php ./cnp/app/config/packages/artdarek/oauth-4-laravel/config.php
 
+    then fill in the appropriate client IDs and client secrets for Twitter or Facebook authentication.
+    (or talk to EJ about borrowing his).
 
-6. From the CNP directory, run the following commands to download, configure and start the virtual server and log in:
+6. Still from the CNP directory, run the following command (if you wish to change the IP address of the
+   CNP dev server, change it in Vagrantfile before running this command and use for /etc/hosts edit below
+   as well):
 
         vagrant up
-        vagrant ssh
 
-   The first command may take a few minutes. The second command will log you into the development server. Running the
-   command 'uname -a' should give you output similar to:
+   This will take a few minutes. It will set up the development server and start it running. You can
+   log into the server at any point by running 'vagrant ssh' from this directory. For other commands,
+   check the vagrant documentation. Note that the CNP directory is shared with this server - on the server it corresponds to the /vagrant directory.
 
-        Linux precise64 3.2.0-23-generic #36-Ubuntu SMP Tue Apr 10 20:39:51 UTC 2012 x86_64 x86_64 x86_64 GNU/Linux
+7. On your *local* machine (laptop), add the following line to the /etc/hosts file:
 
-   Note that the CNP directory is shared with this server - on the server it corresponds to the /vagrant directory.
+      192.168.33.23  cnp.dev
 
-**NOTE: the IP address of the virtual machine is set in the Vagrant file - you may change it if you wish.**
+   If you wish to change the IP address, you must also change it in the Vagrantfile.
+   
 
-7. On your local machine (laptop), edit the /etc/hosts file and create an alias, for example:
-
-        192.168.33.22   cnp.loc
-
-   Verify that entering the URL 'cnp.dev' in a browser gives you the Apache2 Debian Default Page.
