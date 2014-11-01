@@ -25,3 +25,49 @@ sudo service apache2 restart
 
 curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
+
+# Above is from original install.sh by Jeffrey Way. 
+# The following complete the set-up for a CNP test/dev machine.
+
+sudo add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable
+sudo apt-get update
+
+sudo rm -rf /vagrant/html
+sudo chmod -R 777 /vagrant/cnp/app/storage
+
+# Change both APACHE_RUN_USER and APACHE_RUN_GROUP to vagrant from www-data to avoid getting frequent permission-denied
+# problems with the Laravel storage subdirectory
+sed -i "s/www-data/vagrant/" /etc/apache2/envvars
+
+if [ ! -e "/etc/apache2/sites-available/cnp.conf" ];
+    then
+    sudo cp /vagrant/FILES/cnp.conf /etc/apache2/sites-available
+    sudo a2ensite cnp
+    sudo service apache2 reload
+fi
+
+# Install and configure postgres and postgis
+# 
+sudo apt-get install -y postgresql-client-common postgresql postgresql-contrib php5-pgsql php5-dev
+sudo apt-get install -y postgis postgresql-server-dev-9.1 postgresql-9.1-postgis
+sudo apt-get install -y postgresql-9.1-postgis-scripts
+
+echo 'Setting up database and GIS extensions'
+sudo su postgres -c 'createuser -d -R -S vagrant'
+sudo su postgres -c 'createdb cnp'
+sudo su postgres -c 'psql -d cnp -c "CREATE EXTENSION postgis;"'
+sudo su postgres -c 'psql -d cnp -c "CREATE EXTENSION postgis_topology;"'
+
+# Install and configure queueing system and supervisor
+
+sudo apt-get install -y beanstalkd supervisor
+
+sudo sed -i "s/#START=yes/START=yes/" /etc/default/beanstalkd
+sudo service beanstalkd start
+
+
+
+
+
+
+
