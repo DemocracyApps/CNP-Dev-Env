@@ -46,24 +46,40 @@ if [ ! -e "/etc/apache2/sites-available/cnp.conf" ];
     sudo service apache2 reload
 fi
 
-# Install and configure postgres and postgis
-# 
 sudo apt-get install -y postgresql-client-common postgresql postgresql-contrib php5-pgsql php5-dev
 sudo apt-get install -y postgis postgresql-server-dev-9.1 postgresql-9.1-postgis
 sudo apt-get install -y postgresql-9.1-postgis-scripts
+sudo apt-get install -y beanstalkd supervisor
 
+# Install and configure postgres and postgis
 echo 'Setting up database and GIS extensions'
-sudo su postgres -c 'createuser -d -R -S vagrant'
+#sudo su postgres -c 'psql -c "create user vagrant with CREATEDB PASSWORD vagrant;"'
+# sudo su postgres -c 'createuser -d -R -S vagrant'
+# sudo su postgres -c 'psql -c "ALTER USER vagrant WITH PASSWORD vagrant;"'
+sudo su postgres -c '/vagrant/SCRIPTS/create_postgres_vagrant_user.sh'
 sudo su postgres -c 'createdb cnp'
 sudo su postgres -c 'psql -d cnp -c "CREATE EXTENSION postgis;"'
 sudo su postgres -c 'psql -d cnp -c "CREATE EXTENSION postgis_topology;"'
 
+sudo service apache2 restart  # Needed to load pgsql driver.
+
+# Get Laravel set up and running
+echo 'Setting up laravel and CNP application'
+cd /vagrant/cnp/
+composer install
+php artisan migrate
+
 # Install and configure queueing system and supervisor
-
-sudo apt-get install -y beanstalkd supervisor
-
+echo 'Configure and start the queueing system'
 sudo sed -i "s/#START=yes/START=yes/" /etc/default/beanstalkd
 sudo service beanstalkd start
+sudo cp /vagrant/FILES/queue.conf /etc/supervisor/conf.d
+sudo unlink /var/run/supervisor.sock
+sudo service supervisor start
+echo 'Running supervisorctl'
+sudo supervisorctl reread
+sudo supervisorctl add queue
+sudo supervisorctl start queue
 
 
 

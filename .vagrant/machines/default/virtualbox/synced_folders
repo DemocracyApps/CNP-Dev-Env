@@ -1,0 +1,1 @@
+{"virtualbox":{"/var/www":{"guestpath":"/var/www","hostpath":"/Users/ericjackson/Dev/CNP-Dev-Env","disabled":false},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/ericjackson/Dev/CNP-Dev-Env","disabled":false}}}

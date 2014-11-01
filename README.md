@@ -19,6 +19,9 @@ These instructions assume that you are working in OSX and that commands are bein
 
         git clone https://github.com/DemocracyApps/CNP.git cnp
 
+6. Navigate to .../CNP/cnp/src/vendor and run the following comamand:
+        git clone https://github.com/DemocracyApps/JSON.minify.git JSON.minify
+
 6. From the CNP directory, run the following commands to download, configure and start the virtual server and log in:
 
         vagrant up
