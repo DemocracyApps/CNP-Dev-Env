@@ -27,6 +27,9 @@ These instructions assume that you are working in OSX and that commands are bein
 6. On your *local* machine (laptop), add the following line to the /etc/hosts file:
 
       192.168.33.23  cnp.dev
+      
+   You should now be able to type 'cnp.dev' into your browser and see the Community Narratives Platform.
+   You can immediately log in using the 'Demo Login' link.
 
 ##Other Notes
 
