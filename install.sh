@@ -61,6 +61,14 @@ sudo su postgres -c 'createdb cnp'
 sudo su postgres -c 'psql -d cnp -c "CREATE EXTENSION postgis;"'
 sudo su postgres -c 'psql -d cnp -c "CREATE EXTENSION postgis_topology;"'
 
+#PRC Added here
+
+sudo a2dissite 000-default
+sudo chown www-data:www-data -R /var/www/cnp
+sudo service apache2 restart  # Needed to load pgsql driver.
+
+# End PRC
+
 sudo service apache2 restart  # Needed to load pgsql driver.
 
 # Get Laravel set up and running
