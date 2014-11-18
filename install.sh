@@ -54,7 +54,7 @@ sudo chmod -R 777 /vagrant/cnp/app/storage
 # problems with the Laravel storage subdirectory
 
 # PRC Start
-# On DigitalOcean this caused issues, there is no vagrant user, so we make this configurable
+# On DigitalOcean this caused issues, as there is no vagrant user, so we make this configurable
 if [ "$www_user" != "" ]; then
 	echo "Editing Apache User" 
 	sed -i "s/www-data/$www_user/" /etc/apache2/envvars
@@ -86,8 +86,10 @@ sudo su postgres -c 'psql -d cnp -c "CREATE EXTENSION postgis;"'
 sudo su postgres -c 'psql -d cnp -c "CREATE EXTENSION postgis_topology;"'
 
 # PRC Start
-# Disable the default site, since we're now pulling up CNP for all Vhosts or direct IP Access
+# Disable the default site, since we're now serving up CNP for all Vhosts or direct IP Access
 sudo a2dissite 000-default
+
+# Update the permissions on the web root to match the apache user
 sudo chown $www_user:$www_user -R /var/www/cnp
 # End PRC
 

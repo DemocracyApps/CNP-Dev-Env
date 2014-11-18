@@ -40,10 +40,24 @@ These instructions assume that you are working in OSX and that commands are bein
    to have users log in using Twitter or Facebook, you will need to add the appropriate client IDs and client secrets in CNP/cnp/app/config/packages/artdarek/oauth-4-laravel/config.php.
 
 
-
 ## PRC Notes
-  1.TODO: Specify a specific branch
-  1.TODO: Perform code-only updates
-  1.TODO: Specify vagrant reload process
-  1.TODO: Specify SSH key requirment for digital ocean
+
+1. *Digital Ocean Setup Process:* You need to setup a private SSH key with Digital Ocean, and specify that on line 24 of the Vagrantfile
+
+2. Booting an instance on DigitalOcean
+
+    vagrant up provider=digital_ocean
+
+
+3. Updating Code
+
+    vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh'
+    vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh extv1'
+    vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh extv1 master' #specify both CNP and JSON branches
+
+
+4. Updating Server
+
+    vagrant provision #re-run the provisioning scripts
+    vagrant reload #reboot the DigitalOcean 'droplet'
 
