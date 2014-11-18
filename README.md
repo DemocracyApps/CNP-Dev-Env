@@ -76,6 +76,11 @@ We have added support for Digital Ocean as a provider. You can deploy CNP to Dig
 
         vagrant up provider=digital_ocean
 
+        # You can then do all the normal vagrant commands, without specifying provider
+        vagrant reload      # Reboot the instance
+        vagrant provision   # Re-provision the server (run install.sh) 
+        vagrant destroy     # Remove the instance from Digital Ocean
+
 3. **Updating Code or changing branches:**
 
         # use default branches
