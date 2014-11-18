@@ -11,7 +11,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	config.vm.network :private_network, ip: "192.168.33.23"
 
 	# args[0]: specifies Apache User
-	config.vm.provision :shell, :path => "install.sh", :args => ["'vagrant'"] 
+	config.vm.provision :shell, :path => "install.sh", :args => ["vagrant"] 
 
 
 	# Digital Ocean Provider Setup - overrides certain configuraiton options to support 
@@ -28,7 +28,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 		override.ssh.private_key_path = "~/.ssh/demapps_rsa"
 
 		# args[0]: specifies Apache User
-		override.vm.provision :shell, :path => "install.sh", :args => ["'www-data'"]
+		override.vm.provision :shell, :path => "install.sh", :args => ["www-data"]
 
 		# This disables the private networking directive from the default config
 		override.vm.network :private_network, ip: "192.168.33.23", disabled: true
