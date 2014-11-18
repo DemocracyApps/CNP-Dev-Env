@@ -61,7 +61,7 @@ We have added support for Digital Ocean as a provider. You can deploy CNP to Dig
 
 2. **Digital Ocean Access Token:**
 
-        # You also need to set your access token, available here: https://cloud.digitalocean.com/settings/applications
+        # You also need to set your access token as an environmental variable, available here: https://cloud.digitalocean.com/settings/applications
 
         export DIGITAL_OCEAN_ACCESS_TOKEN="{YOUR_DO_TOKEN}"
 
