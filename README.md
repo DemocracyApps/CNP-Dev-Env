@@ -61,7 +61,8 @@ We have added support for Digital Ocean as a provider. You can deploy CNP to Dig
 
 2. **Digital Ocean Access Token:**
 
-        # You also need to set your access token as an environmental variable, available here: https://cloud.digitalocean.com/settings/applications
+        # You also need to set your access token as an environmental variable, available here: 
+        # https://cloud.digitalocean.com/settings/applications
 
         export DIGITAL_OCEAN_ACCESS_TOKEN="{YOUR_DO_TOKEN}"
 
@@ -86,7 +87,7 @@ We have added support for Digital Ocean as a provider. You can deploy CNP to Dig
         # specify both CNP and JSON branches like this:
         vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh {cnp_branch} {json_branch}' 
 
-4. Updating Server
+4. **Updating Server:**
 
         vagrant provision     #re-run the provisioning scripts
         vagrant reload        #reboot the DigitalOcean 'droplet'
