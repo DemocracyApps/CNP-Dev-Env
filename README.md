@@ -51,13 +51,13 @@ These instructions assume that you are working in OSX and that commands are bein
 
 3. Updating Code
 
-      vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh'
-      vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh extv1'
-      vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh extv1 master' #specify both CNP and JSON branches
+        vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh'
+        vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh extv1'
+        vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh extv1 master' #specify both CNP and JSON branches
 
 
 4. Updating Server
 
-    vagrant provision #re-run the provisioning scripts
-    vagrant reload #reboot the DigitalOcean 'droplet'
+        vagrant provision #re-run the provisioning scripts
+        vagrant reload #reboot the DigitalOcean 'droplet'
 
