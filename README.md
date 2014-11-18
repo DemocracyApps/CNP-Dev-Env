@@ -43,11 +43,18 @@ These instructions assume that you are working in OSX and that commands are bein
 ## PRC Notes
 
 1. *Digital Ocean Setup Process:* You need to setup a private SSH key with Digital Ocean, and specify that on line 24 of the Vagrantfile
+        # Setup a SSH-Key using one of the many guides on the internet
+        # Add it to your DigitalOcean account: https://cloud.digitalocean.com/ssh_keys
+
+        # You also need to set your access token, available here: https://cloud.digitalocean.com/settings/applications
+
+        export DIGITAL_OCEAN_ACCESS_TOKEN="{YOUR_DO_TOKEN}
+
+        # To make this permanent, add it to your ~/.bash_profile file and source ~/.bash_profile
 
 2. Booting an instance on DigitalOcean
 
         vagrant up provider=digital_ocean
-
 
 3. Updating Code
 
