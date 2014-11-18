@@ -44,7 +44,9 @@ These instructions assume that you are working in OSX and that commands are bein
 
 We have added support for Digital Ocean as a provider. You can deploy CNP to Digital Ocean and deploy updates to the newly created machine. 
 
-**Note:** You cannot currentl run both a local (VirtualBox) and DigitalOcean version of the same machine from the same directory. However, if you clone this development repository twice into two local directories, this does appear to work. 
+**Note:** You cannot currently run both a local (VirtualBox) and DigitalOcean version of the same machine from the same directory. However, if you clone this development repository twice into two local directories, this does appear to work. 
+
+**Double Note: Do not put your Digital Ocean access token in any files committed to Github!**
 
 1. **Digital Ocean SSH Key:**
 
