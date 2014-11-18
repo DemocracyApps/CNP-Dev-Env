@@ -42,30 +42,41 @@ These instructions assume that you are working in OSX and that commands are bein
 
 ## PRC Notes
 
-1. *Digital Ocean Setup Process:* You need to setup a private SSH key with Digital Ocean, and specify the name of the key on line 24 of the Vagrantfile.
+1. *Digital Ocean SSH Key:* 
 
-        # Setup a SSH-Key using one of the many guides on the internet
+        # Setup a SSH-Key using one of the many guides on the internet, for example:
+        ssh-keygen -t rsa -C "email@example.com"
+        cat ~/.ssh/id_rsa.pub
+
         # Add it to your DigitalOcean account: https://cloud.digitalocean.com/ssh_keys
+
+        # Specify the name of the key file on line 24 of the Vagrantfile
+        override.ssh.private_key_path = "~/.ssh/demapps_rsa"
+
+2. *Digital Ocean Access Token:*
 
         # You also need to set your access token, available here: https://cloud.digitalocean.com/settings/applications
 
-        export DIGITAL_OCEAN_ACCESS_TOKEN="{YOUR_DO_TOKEN}
+        export DIGITAL_OCEAN_ACCESS_TOKEN="{YOUR_DO_TOKEN}"
 
         # To make this permanent, add it to your ~/.bash_profile file and source ~/.bash_profile
+        
+        nano ~/.bash_profile
+        # add the above line - export DIGITAL_OCEAN_ACCESS_TOKEN="{YOUR_DO_TOKEN}"
+        source ~/.bash_profile
 
 2. Booting an instance on DigitalOcean
 
         vagrant up provider=digital_ocean
 
-3. Updating Code
+3. Updating Code or changing branches
 
-        vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh'
-        vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh extv1'
-        vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh extv1 master' #specify both CNP and JSON branches
-
+        vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh' # use default branches
+        vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh extv1' # specify just CNP branch
+        vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh {cnp_branch} {json_branch}' #specify both CNP and JSON branches
 
 4. Updating Server
 
-        vagrant provision #re-run the provisioning scripts
-        vagrant reload #reboot the DigitalOcean 'droplet'
+        vagrant provision     #re-run the provisioning scripts
+        vagrant reload        #reboot the DigitalOcean 'droplet'
 
