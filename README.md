@@ -46,17 +46,14 @@ These instructions assume that you are working in OSX and that commands are bein
 
 2. Booting an instance on DigitalOcean
 
-        ./SCRIPTS/setup_osx.sh
-        vagrant up
-
         vagrant up provider=digital_ocean
 
 
 3. Updating Code
 
-        vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh'
-        vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh extv1'
-        vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh extv1 master' #specify both CNP and JSON branches
+      vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh'
+      vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh extv1'
+      vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh extv1 master' #specify both CNP and JSON branches
 
 
 4. Updating Server
