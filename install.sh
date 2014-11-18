@@ -1,3 +1,18 @@
+echo "Starting Provision"
+
+# PRC Start
+# Review arguments
+if [ "$1" != "" ]; then
+	echo "Args : $1"
+	www_user=$1
+else
+	echo "No args"
+	www_user="vagrant"
+fi
+
+echo "Apache User: $www_user"
+# End PRC 
+
 sudo apt-get update
 
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
@@ -37,10 +52,19 @@ sudo chmod -R 777 /vagrant/cnp/app/storage
 
 # Change both APACHE_RUN_USER and APACHE_RUN_GROUP to vagrant from www-data to avoid getting frequent permission-denied
 # problems with the Laravel storage subdirectory
-sed -i "s/www-data/vagrant/" /etc/apache2/envvars
+
+# PRC Start
+# On DigitalOcean this caused issues, as there is no vagrant user, so we make this configurable
+if [ "$www_user" != "" ]; then
+	echo "Editing Apache User" 
+	sed -i "s/www-data/$www_user/" /etc/apache2/envvars
+fi
+# End PRC
 
 if [ ! -e "/etc/apache2/sites-available/cnp.conf" ];
     then
+
+    # PRC Revise Host Here
     sudo cp /vagrant/FILES/cnp.conf /etc/apache2/sites-available
     sudo a2ensite cnp
     sudo service apache2 reload
@@ -60,6 +84,14 @@ sudo su postgres -c '/vagrant/SCRIPTS/create_postgres_vagrant_user.sh'
 sudo su postgres -c 'createdb cnp'
 sudo su postgres -c 'psql -d cnp -c "CREATE EXTENSION postgis;"'
 sudo su postgres -c 'psql -d cnp -c "CREATE EXTENSION postgis_topology;"'
+
+# PRC Start
+# Disable the default site, since we're now serving up CNP for all Vhosts or direct IP Access
+sudo a2dissite 000-default
+
+# Update the permissions on the web root to match the apache user
+sudo chown $www_user:$www_user -R /var/www/cnp
+# End PRC
 
 sudo service apache2 restart  # Needed to load pgsql driver.
 
