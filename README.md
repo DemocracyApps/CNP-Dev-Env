@@ -42,7 +42,8 @@ These instructions assume that you are working in OSX and that commands are bein
 
 ## PRC Notes
 
-1. *Digital Ocean Setup Process:* You need to setup a private SSH key with Digital Ocean, and specify that on line 24 of the Vagrantfile
+1. *Digital Ocean Setup Process:* You need to setup a private SSH key with Digital Ocean, and specify the name of the key on line 24 of the Vagrantfile.
+
         # Setup a SSH-Key using one of the many guides on the internet
         # Add it to your DigitalOcean account: https://cloud.digitalocean.com/ssh_keys
 
