@@ -71,8 +71,8 @@ These instructions assume that you are working in OSX and that commands are bein
 
 3. Updating Code or changing branches
 
-        vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh' # use default branches
-        vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh extv1' # specify just CNP branch
+        vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh'                            # use default branches
+        vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh extv1'                      # specify just CNP branch
         vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh {cnp_branch} {json_branch}' #specify both CNP and JSON branches
 
 4. Updating Server
