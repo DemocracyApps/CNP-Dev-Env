@@ -30,7 +30,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 		override.vm.network :private_network, ip: "192.168.33.23", disabled: true
 
 		# These are the DigitalOcean provider values 
-		provider.token = "66fea2f5a02c2bb3cf15370e16773e282e18dfc762f346381574aa6436e549c7"
+		provider.token = ENV["DIGITAL_OCEAN_ACCESS_TOKEN"]
 		provider.image = "12.04.5 x64"
 		provider.region = "nyc2"
 	end
