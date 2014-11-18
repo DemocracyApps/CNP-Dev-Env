@@ -41,10 +41,12 @@ These instructions assume that you are working in OSX and that commands are bein
 
 
 ## PRC Notes
-We have added support for Digital Ocean as a provider. You can deploy CNP to Digital Ocean and deploy updates to the newly created machine. 
-Note: You cannot currentl run both a local (VirtualBox) and DigitalOcean version of the same machine from the same directory. However, if you clone this development repository twice into two local directories, this does appear to work. 
 
-1. *Digital Ocean SSH Key:* 
+We have added support for Digital Ocean as a provider. You can deploy CNP to Digital Ocean and deploy updates to the newly created machine. 
+
+**Note:** You cannot currentl run both a local (VirtualBox) and DigitalOcean version of the same machine from the same directory. However, if you clone this development repository twice into two local directories, this does appear to work. 
+
+1. **Digital Ocean SSH Key:**
 
         # Setup a SSH-Key using one of the many guides on the internet, for example:
         ssh-keygen -t rsa -C "email@example.com"
@@ -55,7 +57,7 @@ Note: You cannot currentl run both a local (VirtualBox) and DigitalOcean version
         # Specify the name of the key file on line 24 of the Vagrantfile
         override.ssh.private_key_path = "~/.ssh/demapps_rsa"
 
-2. *Digital Ocean Access Token:*
+2. **Digital Ocean Access Token:**
 
         # You also need to set your access token, available here: https://cloud.digitalocean.com/settings/applications
 
@@ -67,11 +69,11 @@ Note: You cannot currentl run both a local (VirtualBox) and DigitalOcean version
         # add the above line - export DIGITAL_OCEAN_ACCESS_TOKEN="{YOUR_DO_TOKEN}"
         source ~/.bash_profile
 
-2. Booting an instance on DigitalOcean
+2. **Booting an instance on DigitalOcean:**
 
         vagrant up provider=digital_ocean
 
-3. Updating Code or changing branches
+3. **Updating Code or changing branches:**
 
         # use default branches
         vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh'
