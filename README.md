@@ -41,3 +41,9 @@ These instructions assume that you are working in OSX and that commands are bein
 
 
 
+## PRC Notes
+  1.TODO: Specify a specific branch
+  1.TODO: Perform code-only updates
+  1.TODO: Specify vagrant reload process
+  1.TODO: Specify SSH key requirment for digital ocean
+
