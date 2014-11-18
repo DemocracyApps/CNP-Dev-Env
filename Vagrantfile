@@ -10,10 +10,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	config.vm.synced_folder ".", "/var/www"
 	config.vm.network :private_network, ip: "192.168.33.23"
 
-	# args[0]: specifies Apache User
-	config.vm.provision :shell, :path => "install.sh", :args => ["vagrant"] 
-
-
 	# Digital Ocean Provider Setup - overrides certain configuraiton options to support 
 	# a hosted setup via a Digital Ocean droplet
 	# 
@@ -38,4 +34,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 		provider.image = "12.04.5 x64"
 		provider.region = "nyc2"
 	end
+
+	# PRC Start
+	# Creating a separate virtualbox configuration 
+	# For some reaosn, the provision override above wasn't working properly
+	config.vm.provider :virtualbox do |vb, override|
+		# args[0]: specifies Apache User
+		override.vm.provision :shell, :path => "install.sh", :args => ["vagrant"]
+	end
+	# PRC End
+
 end
