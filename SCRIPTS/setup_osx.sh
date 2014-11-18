@@ -42,6 +42,9 @@ echo -e "\n\nProcessing JSON.minify repository"
 
 cd $json_parent_dir
 
+echo -e "Temporary fix: Cloning the JSON repository each time to make sure it exists."
+git clone $json_repo $json_dir
+
 echo -e "\nChecking for existing directory"
 
 # If the repository exists, do a pull
