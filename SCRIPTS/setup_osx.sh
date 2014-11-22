@@ -71,4 +71,11 @@ if [ "$json_branch" != "" ]; then
 	cd ..
 fi
 
+# Get Laravel set up and running
+echo 'Setting up laravel and CNP application'
+cd /vagrant/cnp/
+composer install
+sudo chmod -R 777 /vagrant/cnp/app/storage
+php artisan migrate
+
 echo -e "\nFinished\n"
