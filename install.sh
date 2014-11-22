@@ -96,10 +96,10 @@ sudo chown $www_user:$www_user -R /var/www/cnp
 sudo service apache2 restart  # Needed to load pgsql driver.
 
 # Get Laravel set up and running
-echo 'Setting up laravel and CNP application'
-cd /vagrant/cnp/
-composer install
-php artisan migrate
+# echo 'Setting up laravel and CNP application'
+# cd /vagrant/cnp/
+# composer install
+# php artisan migrate
 
 # Install and configure queueing system and supervisor
 echo 'Configure and start the queueing system'
