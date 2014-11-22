@@ -48,6 +48,8 @@ We have added support for Digital Ocean as a provider. You can deploy CNP to Dig
 
 **Double Note: Do not put your Digital Ocean access token in any files committed to Github!**
 
+The following link may be helpful: https://www.digitalocean.com/community/tutorials/how-to-use-digitalocean-as-your-provider-in-vagrant-on-an-ubuntu-12-10-vps
+
 1. **Digital Ocean SSH Key:**
 
         # Setup a SSH-Key using one of the many guides on the internet, for example:
@@ -59,6 +61,9 @@ We have added support for Digital Ocean as a provider. You can deploy CNP to Dig
         # Specify the name of the key file on line 24 of the Vagrantfile
         override.ssh.private_key_path = "~/.ssh/demapps_rsa"
 
+        # Note: It appears that the public SSH key on DigitalOcean needs to be named Vagrant, though
+        # there may be a way to change that in the Vagrantfile.
+
 2. **Digital Ocean Access Token:**
 
         # You also need to set your access token as an environmental variable, available here: 
@@ -66,15 +71,20 @@ We have added support for Digital Ocean as a provider. You can deploy CNP to Dig
 
         export DIGITAL_OCEAN_ACCESS_TOKEN="{YOUR_DO_TOKEN}"
 
-        # To make this permanent, add it to your ~/.bash_profile file and source ~/.bash_profile
-        
-        nano ~/.bash_profile
-        # add the above line - export DIGITAL_OCEAN_ACCESS_TOKEN="{YOUR_DO_TOKEN}"
-        source ~/.bash_profile
+        # To make this permanent, add it to your ~/.bash_profile file and run:
+                source ~/.bash_profile
 
-2. **Booting an instance on DigitalOcean:**
+3. ** Installing the DigitalOcean Vagrant Provider **
+        # Run the following command:
+          vagrant plugin install vagrant-digitalocean
+          vagrant box add digital_ocean https://github.com/smdahlen/vagrant-digitalocean/raw/master/box/digital_ocean.box
 
-        vagrant up provider=digital_ocean
+        # Note that I had trouble with the first command when running Vagrant 1.6.4. The fix in my case
+        # was to uninstall Vagrant and delete ~/.vagrant.d, then install the new version (1.6.5)
+
+4. **Booting an instance on DigitalOcean:**
+
+        vagrant up --provider digital_ocean
 
         # You can then do all the normal vagrant commands, without specifying provider
         vagrant ssh         # SSH to the Digital Ocean machine 
@@ -82,7 +92,7 @@ We have added support for Digital Ocean as a provider. You can deploy CNP to Dig
         vagrant provision   # Re-provision the server (run install.sh) 
         vagrant destroy     # Remove the instance from Digital Ocean
 
-3. **Updating Code or changing branches:**
+5. **Updating Code or changing branches:**
 
         # use default branches
         vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh'
@@ -93,7 +103,7 @@ We have added support for Digital Ocean as a provider. You can deploy CNP to Dig
         # specify both CNP and JSON branches like this:
         vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh {cnp_branch} {json_branch}' 
 
-4. **Updating Server:**
+6. **Updating Server:**
 
         vagrant provision     #re-run the provisioning scripts
         vagrant reload        #reboot the DigitalOcean 'droplet'
