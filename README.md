@@ -45,7 +45,9 @@ These instructions assume you are working in OSX and that commands are being run
    You can immediately log in using the 'Demo Login' link.
 
 
-## DigitalOcean Deployment (Added by https://github.com/conantp)
+## DigitalOcean Deployment 
+
+(Added by https://github.com/conantp)
 
 We have added support for Digital Ocean as a provider. You can deploy CNP to Digital Ocean and deploy updates to the newly created machine. 
 
