@@ -3,7 +3,7 @@ CNP-Dev-Env
 
 Test/development environment for the Community Narratives Platform. 
 
-##Instructions for Setting Up
+##Common Instructions
 
 These instructions assume that you are working in OSX and that commands are being run in a terminal window.
 
@@ -25,29 +25,27 @@ These instructions assume that you are working in OSX and that commands are bein
 
         vagrant ssh
         cd /var/www
-        ./SCRIPTS/setup_osx.sh
+        ./SCRIPTS/setup.sh
 
    Note that /var/www (and /vagrant) on the server both start with the contents of the directory you are running vagrant from. If you are using the VirtualBox provider, /var/www and /vagrant are linked and are actually shared between your local machine and the server and is linked to /vagrant on the server
 
 The remainder of this README is provider-dependent.
 
-6. On your *local* machine (laptop), add the following line to the /etc/hosts file:
+## Local Development Environment Using VirtualBox
+
+The IP address is set to 192.168.33.23 in the Vagrantfile. If you wish to use a different IP, change it there and use the new value in your local /etc/hosts file.
+
+The system is set up by default with a Demo User with a special login link on the login page. If you wish to have users log in using Twitter or Facebook, you will need to add the appropriate client IDs and client secrets in CNP/cnp/app/config/packages/artdarek/oauth-4-laravel/config.php.
+
+To set a hostname for access, you can add a line like the following to the /etc/hosts file:
 
       192.168.33.23  cnp.dev
       
    You should now be able to type 'cnp.dev' into your browser and see the Community Narratives Platform.
    You can immediately log in using the 'Demo Login' link.
 
-##Other Notes
 
-   The IP address is set to 192.168.33.23 in the Vagrantfile. If you wish to use a different
-   IP, change it there and use the new value in your local /etc/hosts file.
-
-   The system is set up with a Demo User with a special login link on the login page. If you wish
-   to have users log in using Twitter or Facebook, you will need to add the appropriate client IDs and client secrets in CNP/cnp/app/config/packages/artdarek/oauth-4-laravel/config.php.
-
-
-## PRC Notes
+## DigitalOcean Deployment (Added by https://github.com/conantp)
 
 We have added support for Digital Ocean as a provider. You can deploy CNP to Digital Ocean and deploy updates to the newly created machine. 
 

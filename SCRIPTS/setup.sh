@@ -78,6 +78,9 @@ composer install
 sudo chmod -R 777 /var/www/cnp/app/storage
 php artisan migrate
 
+# Need to restart with the directories above created
+sudo service apache2 restart
+
 # Install and configure queueing system and supervisor
 echo 'Configure and start the queueing system'
 sudo sed -i "s/#START=yes/START=yes/" /etc/default/beanstalkd
