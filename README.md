@@ -1,27 +1,31 @@
 CNP-Dev-Env
 ===========
 
-Test/development environment for the Community Narratives Platform. 
+Deploying OSX test/development environment or DigitalOcean server for the Community Narratives Platform. 
+
+These instructions assume you are working in OSX and that commands are being run in a terminal window.
 
 ##Common Instructions
 
-These instructions assume that you are working in OSX and that commands are being run in a terminal window.
 
 1. Install Vagrant: http://www.vagrantup.com/
-2. Install VirtualBox: https://www.virtualbox.org/wiki/Downloads
-3. Install Git: http://git-scm.com/downloads
-4. Navigate to the parent directory where you want to create the development 
+2. Install Git: http://git-scm.com/downloads
+3. Navigate to the parent directory where you want to create the development 
    directory and clone this repository to a directory called CNP:
 
         git clone https://github.com/DemocracyApps/CNP-Dev-Env.git CNP
 
-5. Navigate to the CNP directory and run:
+## Local Development Environment Using VirtualBox
+
+1. Install VirtualBox: https://www.virtualbox.org/wiki/Downloads
+
+2. Navigate to the CNP directory you just cloned and run:
 
         vagrant up
 
    This will take a few minutes. It will set up the development server and start it running. 
 
-6. From the same directory on your local machine, ssh into the server and run the setup script:
+3. From the same directory on your local machine, ssh into the server and run the setup script:
 
         vagrant ssh
         cd /var/www
@@ -29,15 +33,11 @@ These instructions assume that you are working in OSX and that commands are bein
 
    Note that /var/www (and /vagrant) on the server both start with the contents of the directory you are running vagrant from. If you are using the VirtualBox provider, /var/www and /vagrant are linked and are actually shared between your local machine and the server and is linked to /vagrant on the server
 
-The remainder of this README is provider-dependent.
+4. The IP address is set to 192.168.33.23 in the Vagrantfile. If you wish to use a different IP, change it there and use the new value in your local /etc/hosts file.
+    
+    The system is set up by default with a Demo User with a special login link on the login page. If you wish to have users log in using Twitter or Facebook, you will need to add the appropriate client IDs and client secrets in CNP/cnp/app/config/packages/artdarek/oauth-4-laravel/config.php.
 
-## Local Development Environment Using VirtualBox
-
-The IP address is set to 192.168.33.23 in the Vagrantfile. If you wish to use a different IP, change it there and use the new value in your local /etc/hosts file.
-
-The system is set up by default with a Demo User with a special login link on the login page. If you wish to have users log in using Twitter or Facebook, you will need to add the appropriate client IDs and client secrets in CNP/cnp/app/config/packages/artdarek/oauth-4-laravel/config.php.
-
-To set a hostname for access, you can add a line like the following to the /etc/hosts file:
+    To set a hostname for access, you can add a line like the following to the /etc/hosts file:
 
       192.168.33.23  cnp.dev
       
