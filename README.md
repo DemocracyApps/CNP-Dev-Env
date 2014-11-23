@@ -84,7 +84,7 @@ The following link may be helpful: https://www.digitalocean.com/community/tutori
           vagrant plugin install vagrant-digitalocean
           vagrant box add digital_ocean https://github.com/smdahlen/vagrant-digitalocean/raw/master/box/digital_ocean.box
 
-        # Note that I had trouble with the first command when running Vagrant 1.6.4. The fix in my case
+        # I had trouble with the first command when running Vagrant 1.6.4. The fix in my case
         # was to uninstall Vagrant and delete ~/.vagrant.d, then install the new version (1.6.5)
 
 4. **Booting an instance on DigitalOcean:**
@@ -97,16 +97,16 @@ The following link may be helpful: https://www.digitalocean.com/community/tutori
         vagrant provision   # Re-provision the server (run install.sh) 
         vagrant destroy     # Remove the instance from Digital Ocean
 
-5. **Updating Code or changing branches:**
+5. **Installing and updating the CNP or changing branches:**
 
         # use default branches
-        vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh'
+        vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup.sh'
 
         # specify just CNP branch
-        vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh extv1'                      
+        vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup.sh extv1'                      
 
         # specify both CNP and JSON branches like this:
-        vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup_osx.sh {cnp_branch} {json_branch}' 
+        vagrant ssh -c 'cd /var/www; ./SCRIPTS/setup.sh {cnp_branch} {json_branch}' 
 
 6. **Updating Server:**
 
