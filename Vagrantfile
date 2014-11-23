@@ -21,7 +21,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	# 	vagrant up --provider=digital_ocean
     config.vm.provider :digital_ocean do |provider, override|
     	override.vm.box = "digital_ocean"
-		override.ssh.private_key_path = "~/.ssh/demapps_rsa"
+		override.ssh.private_key_path = "~/.ssh/id_do_rsa"
 
 		# args[0]: specifies Apache User
 		override.vm.provision :shell, :path => "install.sh", :args => ["www-data"]

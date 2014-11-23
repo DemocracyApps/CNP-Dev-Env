@@ -102,16 +102,16 @@ sudo service apache2 restart  # Needed to load pgsql driver.
 # php artisan migrate
 
 # Install and configure queueing system and supervisor
-echo 'Configure and start the queueing system'
-sudo sed -i "s/#START=yes/START=yes/" /etc/default/beanstalkd
-sudo service beanstalkd start
-sudo cp /vagrant/FILES/queue.conf /etc/supervisor/conf.d
-sudo unlink /var/run/supervisor.sock
-sudo service supervisor start
-echo 'Running supervisorctl'
-sudo supervisorctl reread
-sudo supervisorctl add queue
-sudo supervisorctl start queue
+# echo 'Configure and start the queueing system'
+# sudo sed -i "s/#START=yes/START=yes/" /etc/default/beanstalkd
+# sudo service beanstalkd start
+# sudo cp /vagrant/FILES/queue.conf /etc/supervisor/conf.d
+# sudo unlink /var/run/supervisor.sock
+# sudo service supervisor start
+# echo 'Running supervisorctl'
+# sudo supervisorctl reread
+# sudo supervisorctl add queue
+# sudo supervisorctl start queue
 
 
 

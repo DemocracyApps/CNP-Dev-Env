@@ -15,14 +15,21 @@ These instructions assume that you are working in OSX and that commands are bein
 
         git clone https://github.com/DemocracyApps/CNP-Dev-Env.git CNP
 
-5. Navigate to the CNP directory and run the following commands:
+5. Navigate to the CNP directory and run:
 
-        ./SCRIPTS/setup_osx.sh
         vagrant up
 
-   This will take a few minutes. It will set up the development server and start it running. You can
-   log into the server at any point by running 'vagrant ssh' from this directory. For other commands,
-   check the vagrant documentation. Note that the CNP directory is shared with this server - on the server it corresponds to the /vagrant directory.
+   This will take a few minutes. It will set up the development server and start it running. 
+
+6. From the same directory on your local machine, ssh into the server and run the setup script:
+
+        vagrant ssh
+        cd /var/www
+        ./SCRIPTS/setup_osx.sh
+
+   Note that /var/www (and /vagrant) on the server both start with the contents of the directory you are running vagrant from. If you are using the VirtualBox provider, /var/www and /vagrant are linked and are actually shared between your local machine and the server and is linked to /vagrant on the server
+
+The remainder of this README is provider-dependent.
 
 6. On your *local* machine (laptop), add the following line to the /etc/hosts file:
 
