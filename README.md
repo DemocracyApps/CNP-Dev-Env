@@ -79,7 +79,7 @@ The following link may be helpful: https://www.digitalocean.com/community/tutori
         # To make this permanent, add it to your ~/.bash_profile file and run:
                 source ~/.bash_profile
 
-3. ** Installing the DigitalOcean Vagrant Provider **
+3. **Installing the DigitalOcean Vagrant Provider:**
         # Run the following command:
           vagrant plugin install vagrant-digitalocean
           vagrant box add digital_ocean https://github.com/smdahlen/vagrant-digitalocean/raw/master/box/digital_ocean.box
