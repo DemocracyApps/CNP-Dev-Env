@@ -95,23 +95,8 @@ sudo chown $www_user:$www_user -R /var/www/cnp
 
 sudo service apache2 restart  # Needed to load pgsql driver.
 
-# Get Laravel set up and running
-# echo 'Setting up laravel and CNP application'
-# cd /vagrant/cnp/
-# composer install
-# php artisan migrate
+sudo apt-get install default-jdk
 
-# Install and configure queueing system and supervisor
-# echo 'Configure and start the queueing system'
-# sudo sed -i "s/#START=yes/START=yes/" /etc/default/beanstalkd
-# sudo service beanstalkd start
-# sudo cp /vagrant/FILES/queue.conf /etc/supervisor/conf.d
-# sudo unlink /var/run/supervisor.sock
-# sudo service supervisor start
-# echo 'Running supervisorctl'
-# sudo supervisorctl reread
-# sudo supervisorctl add queue
-# sudo supervisorctl start queue
 
 
 

@@ -81,6 +81,14 @@ php artisan migrate
 # Need to restart with the directories above created
 sudo service apache2 restart
 
+# Now let's prepare a place for the analytics engine
+sudo mkdir /opt/democracyapps
+sudo mkdir /opt/democracyapps/lib
+sudo mkdir /var/log/democracyapps
+sudo mkdir /var/log/democracyapps/ga
+
+
+
 # Install and configure queueing system and supervisor
 echo 'Configure and start the queueing system'
 sudo sed -i "s/#START=yes/START=yes/" /etc/default/beanstalkd
