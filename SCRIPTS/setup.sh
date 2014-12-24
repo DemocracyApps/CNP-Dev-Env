@@ -105,3 +105,13 @@ sudo supervisorctl add queue
 sudo supervisorctl start queue
 
 echo -e "\nFinished\n"
+echo -e "**************************************************"
+echo -e "***************************************(***********"
+echo -e "** NOTE: In a production environment you should **"
+echo -e "**       restrict network access to the DB in   **"
+echo -e "**       pg_hba.conf and postgresql.conf in     **"
+echo -e "**       /etc/postgresql/9.1/main/              **"
+echo -e "**************************************************"
+echo -e "**************************************************"
+
+
