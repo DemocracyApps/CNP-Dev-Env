@@ -73,6 +73,15 @@ fi
 sudo apt-get install -y postgresql-client-common postgresql postgresql-contrib php5-pgsql php5-dev
 sudo apt-get install -y postgis postgresql-server-dev-9.1 postgresql-9.1-postgis
 sudo apt-get install -y postgresql-9.1-postgis-scripts
+
+#
+# In a production machine these should be limited more than here.
+#
+sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses='*'/" /etc/postgresql/9.1/main/postgresql.conf
+sudo sed -i "\
+99a\
+host	all	ga	0.0.0.0/0	md5" /etc/postgresql/9.1/main/pg_hba.conf
+
 sudo apt-get install -y beanstalkd supervisor
 
 # Install and configure postgres and postgis
@@ -80,7 +89,7 @@ echo 'Setting up database and GIS extensions'
 #sudo su postgres -c 'psql -c "create user vagrant with CREATEDB PASSWORD vagrant;"'
 # sudo su postgres -c 'createuser -d -R -S vagrant'
 # sudo su postgres -c 'psql -c "ALTER USER vagrant WITH PASSWORD vagrant;"'
-sudo su postgres -c '/vagrant/SCRIPTS/create_postgres_vagrant_user.sh'
+sudo su postgres -c '/vagrant/SCRIPTS/create_postgres_users.sh'
 sudo su postgres -c 'createdb cnp'
 sudo su postgres -c 'psql -d cnp -c "CREATE EXTENSION postgis;"'
 sudo su postgres -c 'psql -d cnp -c "CREATE EXTENSION postgis_topology;"'
@@ -95,7 +104,7 @@ sudo chown $www_user:$www_user -R /var/www/cnp
 
 sudo service apache2 restart  # Needed to load pgsql driver.
 
-sudo apt-get install default-jdk
+sudo apt-get install -y default-jdk
 
 
 

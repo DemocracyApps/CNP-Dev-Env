@@ -87,6 +87,9 @@ sudo mkdir /opt/democracyapps/lib
 sudo mkdir /var/log/democracyapps
 sudo mkdir /var/log/democracyapps/ga
 
+sudo su postgres -c 'psql -d cnp -c "grant select on elements to ga;"'
+sudo su postgres -c 'psql -d cnp -c "grant select on relations to ga;"'
+sudo service postgresql restart
 
 
 # Install and configure queueing system and supervisor
