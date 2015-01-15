@@ -5,7 +5,7 @@ Deploying OSX test/development environment or DigitalOcean server for the Commun
 
 These instructions assume you are working in OSX and that commands are being run in a terminal window.
 
-##Common Instructions
+## Common Instructions
 
 
 1. Install Vagrant: http://www.vagrantup.com/
