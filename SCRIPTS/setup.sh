@@ -89,6 +89,7 @@ sudo mkdir /var/log/democracyapps/ga
 
 sudo su postgres -c 'psql -d cnp -c "grant select on elements to ga;"'
 sudo su postgres -c 'psql -d cnp -c "grant select on relations to ga;"'
+sudo su postgres -c 'psql -d cnp -c "grant select on analyses to ga;"'
 sudo service postgresql restart
 
 
