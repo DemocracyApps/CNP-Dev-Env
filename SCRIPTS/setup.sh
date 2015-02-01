@@ -1,3 +1,4 @@
+#!/bin/bash
 echo -e "\nSetting up CNP development environment, with support for branch parameters.\n"
 
 cnp_repo="https://github.com/DemocracyApps/CNP.git"
@@ -89,7 +90,7 @@ sudo mkdir /var/log/democracyapps/ga
 
 sudo su postgres -c 'psql -d cnp -c "grant select on elements to ga;"'
 sudo su postgres -c 'psql -d cnp -c "grant select on relations to ga;"'
-sudo su postgres -c 'psql -d cnp -c "grant select,update on analyses to ga;"'
+sudo su postgres -c 'psql -d cnp -c "grant select,update on perspectives to ga;"'
 sudo su postgres -c 'psql -d cnp -c "grant select,insert,update on analysis_outputs to ga;"'
 sudo su postgres -c 'psql -d cnp -c "grant select,insert,update on analysis_sets to ga;"'
 sudo su postgres -c 'psql -d cnp -c "grant select,insert,update on analysis_set_items to ga;"'
