@@ -7,7 +7,7 @@ cnp_branch="$1"
 
 json_repo="https://github.com/DemocracyApps/JSON.minify.git"
 json_dir="JSON.minify"
-json_parent_dir="cnp/src/vendor"
+json_parent_dir="cnp/vendor"
 json_branch="$2"
 
 echo "Repository URL:			$cnp_repo"
