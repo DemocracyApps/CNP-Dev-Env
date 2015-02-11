@@ -41,7 +41,12 @@ cd ..
 
 echo -e "\n\nProcessing JSON.minify repository"
 
-cd $json_parent_dir
+if cd $json_parent_dir; then
+	echo 'Vendor directory already created'
+else
+	mkdir $json_parent_dir
+	cd $json_parent_dir
+fi
 
 echo -e "Temporary fix: Cloning the JSON repository each time to make sure it exists."
 git clone $json_repo $json_dir
